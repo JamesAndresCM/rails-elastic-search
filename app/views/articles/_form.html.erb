@@ -1,0 +1,16 @@
+<div class="container col-md-5">
+  <div class="card">
+    <div class="card-header">
+      <h4>Formulario de Articulo</h4>
+   </div>
+  <%= simple_form_for @article, validate: true do |f| %>
+    <%= f.error_notification %>
+    <div class="card-body">
+      <%= f.input :title, label: "Titulo", input_html: { class: "form-control" } %>
+      <%= f.input :text ,label: "Text",as: :text, input_html: { class: "form-control",rows: 6 }, hint: 'máximo 1000 caracteres'  %>
+      <br>
+      <% action_art = controller.action_name == "edit" ? "Editar" : "Crear" %>
+      <%= f.button :submit,"#{action_art} Articulo",class: 'btn-block mb-4 btn btn-sm btn-primary' %>
+  <% end %>
+  </div>
+</div>

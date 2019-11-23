@@ -1,0 +1,17 @@
+<h1 style="text-align: center">Articulos</h1>
+  <div class="container">
+    <% if @article.present? %>
+      <%= render 'search/form' %>
+    <div class="card-columns">
+      <% cache @article do %>
+        <%= render @article , cached: true%>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+<br>
+<div class="mt-2">
+  <% unless @article.empty? or @article.nil? %>
+    <%= will_paginate @article, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center) %>
+  <% end %>
+</div>

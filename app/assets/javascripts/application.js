@@ -1,0 +1,13 @@
+//= require jquery
+//= require jquery-ui
+//= require jquery_ujs
+//= require popper
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require gritter
+//= require rails.validations
+//= require rails.validations.simple_form
+//= require validations.coffee
+//= require bootstrap-sweetalert
+//= require sweet-alert-confirm
+//= require_tree .
