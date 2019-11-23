@@ -95,15 +95,15 @@ RSpec.configure do |config|
   config.before(:all) do
     if use_test_cluster?
       Elasticsearch::Model.client = Elasticsearch::Client.new(host: "localhost:9250")
-      Elasticsearch::Extensions::Test::Cluster.start(port: 9250, nodes: 1)
+      Elasticsearch::Extensions::Test::Cluster.start(port: 9200, nodes: 1)
     end
   end
   at_exit do
-    if Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
-      Elasticsearch::Extensions::Test::Cluster.stop(port: 9250)
+    if Elasticsearch::Extensions::Test::Cluster.running?(on: 9200)
+      Elasticsearch::Extensions::Test::Cluster.stop(port: 9200)
     end
   end
   def use_test_cluster?
-    !Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
+    !Elasticsearch::Extensions::Test::Cluster.running?(on: 9200)
   end
 end
