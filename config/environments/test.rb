@@ -3,12 +3,6 @@
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
 
-if Rails.env.test?
-  Elasticsearch::Model.client = Elasticsearch::Client.new host: 'localhost:9250',
-                                                         logger: Logger.new(STDOUT),
-                                                          log: true
-end
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
