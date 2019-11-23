@@ -93,7 +93,7 @@ RSpec.configure do |config|
 
   config.before(:all) do
     if use_test_cluster?
-      Elasticsearch::Model.client = Elasticsearch::Client.new(host: 'localhost:32768')
+      Elasticsearch::Model.client = Elasticsearch::Client.new(host: 'localhost:9250')
       Elasticsearch::Extensions::Test::Cluster.start(port: 9250, nodes: 1)
     end
   end
