@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   self.per_page = 10
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  validates_presence_of :title, uniqueness: { case_sensitive: false }
+  validates :title, uniqueness: true, presence: true
   validates :text, presence: true, length: { in: 3..1000, message: 'mínimo 3 máximo 1000 caracteres'}
 
   def self.search(query)

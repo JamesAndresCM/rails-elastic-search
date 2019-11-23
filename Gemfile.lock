@@ -4,6 +4,20 @@ GIT
   specs:
     sweet-alert-confirm (0.4.1)
 
+GIT
+  remote: https://github.com/rspec/rspec-rails
+  revision: 1a1a2a17cb663474ada9741433ca64899a788656
+  branch: 4-0-maintenance
+  specs:
+    rspec-rails (4.0.0.beta3)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.8)
+      rspec-expectations (~> 3.8)
+      rspec-mocks (~> 3.8)
+      rspec-support (~> 3.8)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -65,6 +79,7 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ansi (1.5.0)
     autoprefixer-rails (9.7.2)
       execjs
     bindex (0.8.1)
@@ -102,11 +117,17 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    database_cleaner (1.7.0)
+    diff-lcs (1.3)
+    docile (1.3.2)
     elasticsearch (7.4.0)
       elasticsearch-api (= 7.4.0)
       elasticsearch-transport (= 7.4.0)
     elasticsearch-api (7.4.0)
       multi_json
+    elasticsearch-extensions (0.0.31)
+      ansi
+      elasticsearch
     elasticsearch-model (7.0.0)
       activesupport (> 3)
       elasticsearch (> 1)
@@ -117,6 +138,13 @@ GEM
       multi_json
     erubi (1.9.0)
     execjs (2.7.0)
+    factory_bot (4.8.2)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
+      railties (>= 3.0.0)
+    faker (1.9.6)
+      i18n (>= 0.7)
     faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.2)
@@ -140,6 +168,7 @@ GEM
       character_set (~> 1.4)
       regexp_parser (~> 1.6)
       regexp_property_values (~> 1.0)
+    json (2.2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -187,6 +216,10 @@ GEM
       railties (= 6.0.1)
       sprockets-rails (>= 2.0.0)
     rails-assets-bootstrap-sweetalert (1.0.1)
+    rails-controller-testing (1.0.4)
+      actionpack (>= 5.0.1.x)
+      actionview (>= 5.0.1.x)
+      activesupport (>= 5.0.1.x)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -204,6 +237,15 @@ GEM
       ffi (~> 1.0)
     regexp_parser (1.6.0)
     regexp_property_values (1.0.0)
+    rspec-core (3.9.0)
+      rspec-support (~> 3.9.0)
+    rspec-expectations (3.9.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-support (3.9.0)
     ruby_dep (1.5.0)
     rubyzip (2.0.0)
     sass (3.7.4)
@@ -231,6 +273,11 @@ GEM
     simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    simplecov (0.17.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -284,8 +331,12 @@ DEPENDENCIES
   client_side_validations
   client_side_validations-simple_form
   coffee-rails (~> 5.0.0)
+  database_cleaner
+  elasticsearch-extensions
   elasticsearch-model
   elasticsearch-rails
+  factory_bot_rails (~> 4.8.2)
+  faker (~> 1.6)
   font-awesome-rails (~> 4.3)
   gritter (= 1.2.0)
   jbuilder (~> 2.7)
@@ -296,9 +347,12 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 6.0.0)
   rails-assets-bootstrap-sweetalert!
+  rails-controller-testing
+  rspec-rails!
   sass-rails (~> 5)
   selenium-webdriver
   simple_form
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   sweet-alert-confirm!
