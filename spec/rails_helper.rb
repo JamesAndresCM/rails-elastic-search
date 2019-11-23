@@ -1,7 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-
 require File.expand_path('../config/environment', __dir__)
 
 # Prevent database truncation if the environment is production
@@ -95,15 +94,15 @@ RSpec.configure do |config|
   config.before(:all) do
     if use_test_cluster?
       Elasticsearch::Model.client = Elasticsearch::Client.new(host: "localhost:9250")
-      Elasticsearch::Extensions::Test::Cluster.start(port: 9200, nodes: 1)
+      Elasticsearch::Extensions::Test::Cluster.start(port: 9250, nodes: 1, command: '/usr/share/elasticsearch/bin/elasticsearch')
     end
   end
   at_exit do
-    if Elasticsearch::Extensions::Test::Cluster.running?(on: 9200)
-      Elasticsearch::Extensions::Test::Cluster.stop(port: 9200)
+    if Elasticsearch::Extensions::Test::Cluster.running?(on: 9250, command: '/usr/share/elasticsearch/bin/elasticsearch')
+      Elasticsearch::Extensions::Test::Cluster.stop(port: 9250, command: '/usr/share/elasticsearch/bin/elasticsearch')
     end
   end
   def use_test_cluster?
-    !Elasticsearch::Extensions::Test::Cluster.running?(on: 9200)
+    !Elasticsearch::Extensions::Test::Cluster.running?(on: 9250, command: '/usr/share/elasticsearch/bin/elasticsearch')
   end
 end
